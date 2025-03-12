@@ -13,31 +13,33 @@ class Program
         bandasRegistradas.Add("Novo amor", new List<int> { 10, 8, 6});
         bandasRegistradas.Add("Betel", new List<int>());
 
-        Musica musica1 = new Musica();
-        musica1.Nome = "give you";
-        musica1.Artista = "Betel";
-        musica1.Duracao = 273;
-        musica1.Disponivel = true;
-        Console.WriteLine(musica1.DescricaoResumida);
+        Banda EKK = new Banda("EKK");
+        
+        Album albumEKK = new Album("Canções que eu amo");
 
-
-        Musica musica2 = new Musica();
-        musica2.Nome = "story";
-        musica2.Artista = "Novo Amor";
-        musica2.Duracao = 367;
-        musica2.Disponivel = false;
+        Musica musica1 = new Musica(EKK, "give you")
+        {
+            Duracao = 273,
+            Disponivel = true,
+        };
+       
+        
+        Musica musica2 = new Musica(EKK, "story")
+        {
+            Duracao = 367,
+            Disponivel = false,
+        };
+        
+        albumEKK.AdicionarMusica(musica1);
+        albumEKK.AdicionarMusica(musica2);
+        EKK.AdicionarAlbum(albumEKK);
 
         musica1.ExibirFichaTecnica();
         musica2.ExibirFichaTecnica();
-
-        Console.WriteLine($"Nome da música: {musica1.Nome}\n");
-        Console.WriteLine($"Artista: {musica1.Artista}\n");
-
-        Album albumDeMusica = new Album();
-        albumDeMusica.Nome = "Canções que eu amo";
-
-        albumDeMusica.AdicionarMusica(musica1);
-        albumDeMusica.AdicionarMusica(musica2);
+        albumEKK.ExibirMusicasDoAlbum();
+        EKK.ExibirDiscografia();
+        
+ 
 
         ExibirOpcoesDoMenu();
 
