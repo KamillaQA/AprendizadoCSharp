@@ -8,8 +8,11 @@ class Program
     {
         // Screen Sound
         string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
-        List<string> listaDasBandas = new List<string> { "Maverick", "Upperoom", "Adele" };
-
+        // List<string> listaDasBandas = new List<string> { "Maverick", "Upperoom", "Adele" };
+        Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
+        bandasRegistradas.Add("Novo amor", new List<int> { 10, 8, 6});
+        bandasRegistradas.Add("Betel", new List<int>());
+       
         ExibirOpcoesDoMenu();
 
         // Aguarda o usuário pressionar Enter antes de fechar o console
@@ -26,6 +29,14 @@ class Program
             ╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░");
             Console.WriteLine(mensagemDeBoasVindas);
         }
+        void ExibirTituloDaOpcao(string titulo)
+        {
+            int quantidadeDeLetras = titulo.Length;
+            string asteriscos = string.Empty.PadLeft(quantidadeDeLetras, '*');
+            Console.WriteLine(asteriscos);
+            Console.WriteLine(titulo);
+            Console.WriteLine(asteriscos + "\n");
+        }
         void RegistrarBanda()
         {
             Console.Clear();
@@ -34,7 +45,7 @@ class Program
             Console.WriteLine("**********************\n");
             Console.Write("Digite o nome da banda que deseja registrar: ");
             string nomeDaBanda = Console.ReadLine()!;
-            listaDasBandas.Add(nomeDaBanda);
+            bandasRegistradas.Add(nomeDaBanda, new List<int> { 1 });
             Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso!");
             Thread.Sleep(2000);
             Console.Clear();
@@ -43,16 +54,14 @@ class Program
         void MostrarBandasRegistradas()
         {
             Console.Clear();
-            Console.WriteLine("************************************");
-            Console.WriteLine("Exibindo todas as bandas registradas");
-            Console.WriteLine("************************************\n");
+            ExibirTituloDaOpcao("Exibindo todas as bandas registradas na nossa aplicação");
 
             //for (int i = 0; i < listaDasBandas.Count; i++)
             //{
             //Console.WriteLine($"Banda: {listaDasBandas[i]}");
             //}
 
-            foreach (string banda in listaDasBandas)
+            foreach (string banda in bandasRegistradas.Keys)
             {
                 Console.WriteLine($"Banda: {banda}");
             }
@@ -63,6 +72,32 @@ class Program
             ExibirOpcoesDoMenu();
 
         }
+        void AvaliarUmaBanda()
+        {
+            Console.Clear();
+            ExibirTituloDaOpcao("Avaliar banda");
+            Console.Write("Digite o nome da banda que deseja avaliar: ");
+            string nomeDaBanda = Console.ReadLine()!;
+            if (bandasRegistradas.ContainsKey(nomeDaBanda))
+            {
+                Console.Write($"Qual a nota que a banda {nomeDaBanda} merece: ");
+                int nota = int.Parse(Console.ReadLine()!);
+                bandasRegistradas[nomeDaBanda].Add(nota);
+                Console.WriteLine($"\nA nota {nota} foi registrada com sucesso para a banda {nomeDaBanda}");
+                Thread.Sleep(2000);
+                Console.Clear();
+                ExibirOpcoesDoMenu();
+            }
+            else
+            {
+                Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
+                Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+                Console.ReadKey();
+                Console.Clear();
+                ExibirOpcoesDoMenu();
+            }
+        }
+
         void ExibirOpcoesDoMenu()
         {
             ExibirLogo();
@@ -85,7 +120,7 @@ class Program
                     MostrarBandasRegistradas();
                     break;
                 case 3:
-                    Console.WriteLine("Você escolheu a opção " + opcaoEscolhidaNumerica);
+                    AvaliarUmaBanda();
                     break;
                 case 4:
                     Console.WriteLine("Você escolheu a opção " + opcaoEscolhidaNumerica);
@@ -98,6 +133,8 @@ class Program
                     break;
             }
         }
+
+
         /*1 desafio sobre C#
      static void DesafioCurso()
      {
@@ -219,6 +256,114 @@ class Program
 
             return soma;
         }*/
+
+        //6 desafio: Criar um dicionário que represente um aluno, com uma lista de notas, e mostre a média de suas notas na tela;
+        /* MediaNotasAluno();
+         static void MediaNotasAluno()
+         {
+             Dictionary<string, List<double>> aluno = new Dictionary<string, List<double>>();
+             Console.Write("Digite o nome do aluno: ");
+             string nome = Console.ReadLine();
+             aluno[nome] = new List<double>();
+
+             Console.Write("Quantas notas deseja adicionar? ");
+             int qtdNotas = int.Parse(Console.ReadLine());
+             for (int i = 0; i < qtdNotas; i++)
+             {
+                 Console.Write($"Digite a {i + 1}ª nota: ");
+                 double nota = double.Parse(Console.ReadLine());
+                 aluno[nome].Add(nota);
+             }
+
+             double media = aluno[nome].Average();
+             Console.WriteLine($"A média do aluno {nome} é: {media:F2}");
+         }*/
+
+        //7 desafio: Criar um programa que gerencie o estoque de uma loja. Utilize um dicionário para armazenar produtos e suas quantidades em estoque e mostre, a partir do nome de um produto, sua quantidade em estoque.
+        /*GerenciarEstoque();
+        static void GerenciarEstoque()
+        {
+            Dictionary<string, int> estoqueProdutos = new Dictionary<string, int>
+            {
+                {"Notebook", 5},
+                {"Mouse", 20},
+                {"Teclado", 15},
+                {"Monitor", 7}
+            };
+
+            Console.Write("Digite o nome do produto para verificar o estoque: ");
+            string produto = Console.ReadLine()!;
+
+            if (estoqueProdutos.ContainsKey(produto))
+            {
+                Console.WriteLine($"O produto {produto} tem {estoqueProdutos[produto]} unidades em estoque.");
+            }
+            else
+            {
+                Console.WriteLine("Produto não encontrado no estoque.");
+            }
+        }*/
+
+        //8 desafio:Crie um programa que implemente um quiz simples de perguntas e respostas. Utilize um dicionário para armazenar as perguntas e as respostas corretas.
+        /* QuizPerguntas();
+         static void QuizPerguntas()
+         {
+             Dictionary<string, string> quiz = new Dictionary<string, string>
+         {
+             { "Qual a capital da França?", "Paris" },
+             { "Qual é o maior planeta do sistema solar?", "Júpiter" },
+             { "Quanto é 2 + 2?", "4" }
+         };
+
+             int pontuacao = 0;
+
+             foreach (var pergunta in quiz)
+             {
+                 Console.WriteLine(pergunta.Key);
+                 Console.Write("Resposta: ");
+                 string resposta = Console.ReadLine();
+
+                 if (resposta.Equals(pergunta.Value, StringComparison.OrdinalIgnoreCase))
+                 {
+                     Console.WriteLine("Correto!");
+                     pontuacao++;
+                 }
+                 else
+                 {
+                     Console.WriteLine($"Errado! A resposta correta é {pergunta.Value}");
+                 }
+             }
+
+             Console.WriteLine($"Você acertou {pontuacao} de {quiz.Count} perguntas.");
+         }*/
+
+
+        //9 desafio: Criar um programa que simule um sistema de login utilizando um dicionário para armazenar nomes de usuário e senhas.
+        /*SistemaLogin();
+        static void SistemaLogin()
+        {
+            Dictionary<string, string> usuarios = new Dictionary<string, string>
+        {
+            { "usuario1", "senha123" },
+            { "kamillaqa", "segredo" },
+            { "admin", "admin123" }
+        };
+
+            Console.Write("Digite seu nome de usuário: ");
+            string usuario = Console.ReadLine();
+            Console.Write("Digite sua senha: ");
+            string senha = Console.ReadLine();
+
+            if (usuarios.ContainsKey(usuario) && usuarios[usuario] == senha)
+            {
+                Console.WriteLine("Login bem-sucedido!");
+            }
+            else
+            {
+                Console.WriteLine("Usuário ou senha incorretos!");
+            }
+        }*/
+
     }
 
 }
