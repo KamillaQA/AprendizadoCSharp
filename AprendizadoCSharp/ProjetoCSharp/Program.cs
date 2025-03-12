@@ -12,7 +12,25 @@ class Program
         Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
         bandasRegistradas.Add("Novo amor", new List<int> { 10, 8, 6});
         bandasRegistradas.Add("Betel", new List<int>());
-       
+
+        Musica musica1 = new Musica();
+        musica1.nome = "The story I'll god";
+        musica1.artista = "Upperoom";
+        musica1.duracao = 273;
+        musica1.disponivel = true;
+
+        Musica musica2 = new Musica();
+        musica2.nome = "The graces";
+        musica2.artista = "Upperoom";
+        musica2.duracao = 367;
+        musica2.disponivel = false;
+
+        musica1.ExibirFichaTecnica();
+        musica2.ExibirFichaTecnica();
+
+        Console.WriteLine($"Nome da música: {musica1.nome}\n");
+        Console.WriteLine($"Artista: {musica1.artista}\n");
+
         ExibirOpcoesDoMenu();
 
         // Aguarda o usuário pressionar Enter antes de fechar o console
@@ -389,6 +407,25 @@ class Program
                 Console.WriteLine("Usuário ou senha incorretos!");
             }
         }*/
+
+        //10 desafio: Criar um objeto do tipo Conta, adicionar dados e mostrar as informações titular e saldo no console, utilizando interpolação de strings.
+       /* // Criando titulares
+        Titular titular1 = new Titular("João Silva", "123.456.789-00", "Rua das Flores, 123");
+        Titular titular2 = new Titular("George Harrison", "000.000.000-00", "Rua dos Besouros, Liverpool");
+
+        // Criando conta bancária associada ao titular2
+        ContaBancaria c = new ContaBancaria(titular2, 1, 2234, 100000);
+
+        Console.WriteLine("\nInformações da Conta Bancária:");
+        Console.WriteLine(c.Informacoes);
+
+        // Exibindo informações do titular DA CONTA (titular2)
+        Console.WriteLine("\nInformações do Titular da Conta:");
+        Console.WriteLine($"Nome: {c.Titular.Nome}");
+        Console.WriteLine($"CPF: {c.Titular.Cpf}");
+        Console.WriteLine($"Endereço: {c.Titular.Endereco}");
+        Console.WriteLine($"Saldo Atual: R$ {c.Saldo:F2}\n");*/
+
 
     }
 
