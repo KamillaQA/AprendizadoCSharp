@@ -1,5 +1,5 @@
 ﻿//Desafio: Desenvolver a classe Produto, com os atributos nome, marca, preco e estoque. Além disso, garantir que o preço e o estoque do produto sejam valores positivos e criar uma propriedade que mostra detalhadamente as informações do produto, para que seja usado pela equipe de vendas.
-namespace ProjetoCSharp.Modelos;
+//Desafio: Desenvolver uma classe que represente um estoque de produtos, e que tenha as funcionalidades de adicionar novos produtos, e exibir todos os produtos no estoque.
 internal class Produto
 {
     private double preco;

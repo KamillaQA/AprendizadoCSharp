@@ -14,24 +14,30 @@ class Program
         bandasRegistradas.Add("Betel", new List<int>());
 
         Musica musica1 = new Musica();
-        musica1.nome = "Roxane";
-        musica1.artista = "The Police";
-        musica1.duracao = 273;
+        musica1.Nome = "give you";
+        musica1.Artista = "Betel";
+        musica1.Duracao = 273;
         musica1.Disponivel = true;
         Console.WriteLine(musica1.DescricaoResumida);
 
 
         Musica musica2 = new Musica();
-        musica2.nome = "Vertigo";
-        musica2.artista = "U2";
-        musica2.duracao = 367;
-        musica2.disponivel = false;
+        musica2.Nome = "story";
+        musica2.Artista = "Novo Amor";
+        musica2.Duracao = 367;
+        musica2.Disponivel = false;
 
         musica1.ExibirFichaTecnica();
         musica2.ExibirFichaTecnica();
 
-        Console.WriteLine($"Nome da música: {musica1.nome}\n");
-        Console.WriteLine($"Artista: {musica1.artista}\n");
+        Console.WriteLine($"Nome da música: {musica1.Nome}\n");
+        Console.WriteLine($"Artista: {musica1.Artista}\n");
+
+        Album albumDeMusica = new Album();
+        albumDeMusica.Nome = "Canções que eu amo";
+
+        albumDeMusica.AdicionarMusica(musica1);
+        albumDeMusica.AdicionarMusica(musica2);
 
         ExibirOpcoesDoMenu();
 
@@ -411,23 +417,48 @@ class Program
         }*/
 
         //10 desafio: Criar um objeto do tipo Conta, adicionar dados e mostrar as informações titular e saldo no console, utilizando interpolação de strings.
-       /* // Criando titulares
-        Titular titular1 = new Titular("João Silva", "123.456.789-00", "Rua das Flores, 123");
-        Titular titular2 = new Titular("George Harrison", "000.000.000-00", "Rua dos Besouros, Liverpool");
+        //11 desafio: Instanciar um objeto do tipo Conta e um do tipo Titular e mostrar as informações de Titular, a partir da Conta.
+        /* // Criando titulares
+         Titular titular1 = new Titular("João Silva", "123.456.789-00", "Rua das Flores, 123");
+         Titular titular2 = new Titular("George Harrison", "000.000.000-00", "Rua dos Besouros, Liverpool");
 
-        // Criando conta bancária associada ao titular2
-        ContaBancaria c = new ContaBancaria(titular2, 1, 2234, 100000);
+         // Criando conta bancária associada ao titular2
+         ContaBancaria c = new ContaBancaria(titular2, 1, 2234, 100000);
 
-        Console.WriteLine("\nInformações da Conta Bancária:");
-        Console.WriteLine(c.Informacoes);
+         Console.WriteLine("\nInformações da Conta Bancária:");
+         Console.WriteLine(c.Informacoes);
 
-        // Exibindo informações do titular DA CONTA (titular2)
-        Console.WriteLine("\nInformações do Titular da Conta:");
-        Console.WriteLine($"Nome: {c.Titular.Nome}");
-        Console.WriteLine($"CPF: {c.Titular.Cpf}");
-        Console.WriteLine($"Endereço: {c.Titular.Endereco}");
-        Console.WriteLine($"Saldo Atual: R$ {c.Saldo:F2}\n");*/
+         // Exibindo informações do titular DA CONTA (titular2)
+         Console.WriteLine("\nInformações do Titular da Conta:");
+         Console.WriteLine($"Nome: {c.Titular.Nome}");
+         Console.WriteLine($"CPF: {c.Titular.Cpf}");
+         Console.WriteLine($"Endereço: {c.Titular.Endereco}");
+         Console.WriteLine($"Saldo Atual: R$ {c.Saldo:F2}\n");*/
 
+
+        //12 desafio: Modelar um sistema para um restaurante com classes como Restaurante, Mesa, Pedido e Cardapio. A classe Restaurante deve ter mesas que podem ser reservadas e um cardápio com itens que podem ser pedidos. Os pedidos podem estar associados a uma mesa.
+        // Criando o restaurante e o cardápio
+        /*Restaurante restaurante = new Restaurante();
+        ProdutoRestaurante pizza = new ProdutoRestaurante { Nome = "Pizza", Preco = 50.00m };
+        ProdutoRestaurante suco = new ProdutoRestaurante { Nome = "Suco", Preco = 10.00m };
+
+        restaurante.Cardapio.AdicionarProduto(pizza);
+        restaurante.Cardapio.AdicionarProduto(suco);
+
+        // Criando mesas
+        Mesa mesa1 = new Mesa { Numero = 1 };
+        Mesa mesa2 = new Mesa { Numero = 2 };
+
+        restaurante.Mesas.Add(mesa1);
+        restaurante.Mesas.Add(mesa2);
+
+        // Reservando mesa e fazendo pedidos
+        mesa1.Reservar();
+        mesa1.RealizarPedido(pizza, 2);
+        mesa1.RealizarPedido(suco, 1);
+
+        // Exibindo pedidos da mesa 1
+        mesa1.ExibirPedidos();*/
 
     }
 

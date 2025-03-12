@@ -1,9 +1,6 @@
 ﻿//Desafio: Desenvolver uma classe que modele um carro, e que contenha os métodos acelerar, frear e buzinar
 //Desafio: Reescrever os atributos da classe Carro, de modo que eles sejam properties, e adicionar uma nova propertie DescricaoDetalhada, que mostra o fabricante, modelo e ano do carro.
 //Desafio: Reescrever a propriedade Ano da classe carro, para que ela apenas aceite valores entre 1960 e 2023.
-using static System.Runtime.InteropServices.JavaScript.JSType;
-namespace ProjetoCSharp.Modelos;
-
 internal class Carro
 {
     private int ano;
