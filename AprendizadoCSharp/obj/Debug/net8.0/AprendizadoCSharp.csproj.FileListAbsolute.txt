@@ -1,0 +1,15 @@
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\bin\Debug\net8.0\AprendizadoCSharp.exe
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\bin\Debug\net8.0\AprendizadoCSharp.deps.json
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\bin\Debug\net8.0\AprendizadoCSharp.runtimeconfig.json
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\bin\Debug\net8.0\AprendizadoCSharp.dll
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\bin\Debug\net8.0\AprendizadoCSharp.pdb
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\obj\Debug\net8.0\AprendizadoCSharp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\obj\Debug\net8.0\AprendizadoCSharp.AssemblyInfoInputs.cache
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\obj\Debug\net8.0\AprendizadoCSharp.AssemblyInfo.cs
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\obj\Debug\net8.0\AprendizadoCSharp.csproj.CoreCompileInputs.cache
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\obj\Debug\net8.0\AprendizadoCSharp.sourcelink.json
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\obj\Debug\net8.0\AprendizadoCSharp.dll
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\obj\Debug\net8.0\refint\AprendizadoCSharp.dll
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\obj\Debug\net8.0\AprendizadoCSharp.pdb
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\obj\Debug\net8.0\AprendizadoCSharp.genruntimeconfig.cache
+C:\Users\92006\Desktop\Logica\AprendizadoCSharp\AprendizadoCSharp\obj\Debug\net8.0\ref\AprendizadoCSharp.dll
