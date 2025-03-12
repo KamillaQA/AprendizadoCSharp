@@ -1,4 +1,5 @@
 ﻿// Desafio: Criar uma classe que representa uma conta bancária, com um número indicador, titular, saldo e senha.
+// Desafio: Reescrever a classe Conta, criada no ultimo desafio, utilizando properties.
 
 internal class ContaBancaria
 {

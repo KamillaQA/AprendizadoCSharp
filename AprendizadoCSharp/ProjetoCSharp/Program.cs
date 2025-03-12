@@ -14,14 +14,16 @@ class Program
         bandasRegistradas.Add("Betel", new List<int>());
 
         Musica musica1 = new Musica();
-        musica1.nome = "The story I'll god";
-        musica1.artista = "Upperoom";
+        musica1.nome = "Roxane";
+        musica1.artista = "The Police";
         musica1.duracao = 273;
-        musica1.disponivel = true;
+        musica1.Disponivel = true;
+        Console.WriteLine(musica1.DescricaoResumida);
+
 
         Musica musica2 = new Musica();
-        musica2.nome = "The graces";
-        musica2.artista = "Upperoom";
+        musica2.nome = "Vertigo";
+        musica2.artista = "U2";
         musica2.duracao = 367;
         musica2.disponivel = false;
 
