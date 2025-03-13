@@ -1,21 +1,21 @@
-﻿class Musica
+﻿namespace AprendizadoCSharp.Modelos;
+internal class Musica
 {
+    //definindo obrigatóriedade para o campo
     public Musica(Banda artista, string nome)
     {
         Artista = artista;
         Nome = nome;
     }
 
+    //Tipos Primitivos
     public string Nome { get; }
     public Banda Artista { get; }
     public int Duracao { get; set; }
+    //Propriedade (começa com pascal case)
     public bool Disponivel { get; set; }
+    //Lambda
     public string DescricaoResumida =>$"A música {Nome} pertence à banda {Artista}";
-
-    public Musica(Banda artista)
-    {
-        Artista = artista;
-    }
 
     public void EscreveDisponivel(bool value)
     {

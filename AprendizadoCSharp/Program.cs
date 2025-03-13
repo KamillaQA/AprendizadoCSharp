@@ -1,20 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using DesafioCurso; // Namespace para o desafio
+﻿using Alura.Filmes;
+using AprendizadoCSharp.DesafioCurso;
+using AprendizadoCSharp.Modelos; // Namespace para o desafio
 
-class Program
+internal class Program
 {
-    static void Main()
+    private static void Main(string[] args)
     {
         // Screen Sound
         string mensagemDeBoasVindas = "Boas vindas ao Screen Sound";
         // List<string> listaDasBandas = new List<string> { "Maverick", "Upperoom", "Adele" };
-        Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
-        bandasRegistradas.Add("Novo amor", new List<int> { 10, 8, 6});
-        bandasRegistradas.Add("Betel", new List<int>());
+        //Dictionary<string, List<int>> bandasRegistradas = new Dictionary<string, List<int>>();
+        Dictionary<string, Banda> bandasRegistradas = new Dictionary<string, Banda>();
 
         Banda EKK = new Banda("EKK");
-        
+        EKK.AdicionarNota(new Avaliacao(10));
+        EKK.AdicionarNota(new Avaliacao(8));
+        EKK.AdicionarNota(new Avaliacao(6));
+        Banda Upperoom = new("Upperoom");
+       
+        bandasRegistradas.Add(EKK.Nome, EKK);
+        bandasRegistradas.Add(Upperoom.Nome, Upperoom);
+
+
         Album albumEKK = new Album("Canções que eu amo");
 
         Musica musica1 = new Musica(EKK, "give you")
@@ -82,17 +89,42 @@ class Program
         void RegistrarBanda()
         {
             Console.Clear();
-            Console.WriteLine("**********************");
-            Console.WriteLine("Registro de bandas");
-            Console.WriteLine("**********************\n");
+            Console.Write("Registro das bandas\n");
             Console.Write("Digite o nome da banda que deseja registrar: ");
             string nomeDaBanda = Console.ReadLine()!;
-            bandasRegistradas.Add(nomeDaBanda, new List<int> { 1 });
+            Banda banda = new Banda(nomeDaBanda);
+            bandasRegistradas.Add(nomeDaBanda, banda);
             Console.WriteLine($"A banda {nomeDaBanda} foi registrada com sucesso!");
-            Thread.Sleep(2000);
+            Thread.Sleep(4000);
             Console.Clear();
             ExibirOpcoesDoMenu();
         }
+        void RegistrarAlbum()
+        {
+            Console.Clear();
+            ExibirTituloDaOpcao("Registro de álbuns");
+            Console.Write("Digite a banda cujo álbum deseja registrar: ");
+            string nomeDaBanda = Console.ReadLine()!;
+            if (bandasRegistradas.ContainsKey(nomeDaBanda))
+            {
+                Console.Write("Agora digite o título do álbum: ");
+                string tituloAlbum = Console.ReadLine()!;
+                Avaliacao nota = Avaliacao.Parse(Console.ReadLine()!);
+                Banda banda = bandasRegistradas[nomeDaBanda];
+                banda.AdicionarNota(nota);
+                banda.AdicionarAlbum(new Album(tituloAlbum));
+                Console.WriteLine($"O álbum {tituloAlbum} de {nomeDaBanda} foi registrado com sucesso!");
+                Thread.Sleep(4000);
+                Console.Clear();
+            }
+            else
+            {
+                Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
+            }
+
+            ExibirOpcoesDoMenu();
+        }
+
         void MostrarBandasRegistradas()
         {
             Console.Clear();
@@ -122,25 +154,35 @@ class Program
             string nomeDaBanda = Console.ReadLine()!;
             if (bandasRegistradas.ContainsKey(nomeDaBanda))
             {
+                Banda banda = bandasRegistradas[nomeDaBanda];
                 Console.Write($"Qual a nota que a banda {nomeDaBanda} merece: ");
                 int nota = int.Parse(Console.ReadLine()!);
-                bandasRegistradas[nomeDaBanda].Add(nota);
+                banda.AdicionarNota(new Avaliacao(nota)); 
                 Console.WriteLine($"\nA nota {nota} foi registrada com sucesso para a banda {nomeDaBanda}");
                 Thread.Sleep(2000);
                 Console.Clear();
                 ExibirOpcoesDoMenu();
             }
-            else
+        }
+        void ExibirDetalhes()
+        {
+            Console.Clear();
+            ExibirTituloDaOpcao("Exibir detalhes da banda");
+            Console.Write("Digite o nome da banda que deseja conhecer melhor: ");
+            string nomeDaBanda = Console.ReadLine()!;
+            if (bandasRegistradas.ContainsKey(nomeDaBanda))
             {
-                Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
-                Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+                Banda banda = bandasRegistradas[nomeDaBanda];
+                Console.WriteLine($"\nA média da banda {nomeDaBanda} é {banda.Media}.");
+                Console.WriteLine("Digite uma tecla para votar ao menu principal");
                 Console.ReadKey();
                 Console.Clear();
                 ExibirOpcoesDoMenu();
+
             }
         }
 
-        void ExibirMedia()
+            void ExibirMedia()
         {
             Console.Clear();
             ExibirTituloDaOpcao("Exibir média da banda");
@@ -148,13 +190,11 @@ class Program
             string nomeDaBanda = Console.ReadLine()!;
             if (bandasRegistradas.ContainsKey(nomeDaBanda))
             {
-                List<int> notasDaBanda = bandasRegistradas[nomeDaBanda];
-                Console.WriteLine($"\nA média da banda {nomeDaBanda} é {notasDaBanda.Average()}.");
+                Console.WriteLine($"\nA média da banda {nomeDaBanda} é {bandasRegistradas[nomeDaBanda].Media}.");
                 Console.WriteLine("Digite uma tecla para votar ao menu principal");
                 Console.ReadKey();
                 Console.Clear();
                 ExibirOpcoesDoMenu();
-
             }
             else
             {
@@ -170,9 +210,11 @@ class Program
         {
             ExibirLogo();
             Console.WriteLine("\nDigite 1 para registrar uma banda");
-            Console.WriteLine("Digite 2 para mostrar todas as bandas");
-            Console.WriteLine("Digite 3 para avaliar uma banda");
-            Console.WriteLine("Digite 4 para exibir a média de uma banda");
+            Console.WriteLine("Digite 2 para registrar o álbum de uma banda");
+            Console.WriteLine("Digite 3 para mostrar todas as bandas");
+            Console.WriteLine("Digite 4 para avaliar uma banda");
+            Console.WriteLine("Digite 5 para exibir os detalhes de uma banda");
+            Console.WriteLine("Digite 6 para exibir a média de uma banda");
             Console.WriteLine("Digite -1 para sair");
 
             Console.Write("\nDigite a sua opção: ");
@@ -185,12 +227,18 @@ class Program
                     RegistrarBanda();
                     break;
                 case 2:
-                    MostrarBandasRegistradas();
+                    RegistrarAlbum();
                     break;
                 case 3:
-                    AvaliarUmaBanda();
+                    MostrarBandasRegistradas();
                     break;
                 case 4:
+                    AvaliarUmaBanda();
+                    break;
+                case 5:
+                    ExibirDetalhes();
+                    break;
+                case 6:
                     ExibirMedia();
                     break;
                 case -1:
@@ -476,6 +524,152 @@ class Program
         // Exibindo pedidos da mesa 1
         mesa1.ExibirPedidos();*/
 
+        //13 desafio:Criar um programa Program.cs, instanciar seus 5 filmes favoritos, guardá-los em uma lista e mostrar as suas informações no console.
+        //Instanciando 5 filmes favoritos
+        /*
+        var filme1 = new Filme("O Poderoso Chefão", 175);
+        var filme2 = new Filme("Matrix", 136);
+        var filme3 = new Filme("Inception", 148);
+        var filme4 = new Filme("O Senhor dos Anéis: A Sociedade do Anel", 178);
+        var filme5 = new Filme("Gladiador", 155);
+
+        // Criando artistas
+        var artista1 = new ArtistaFilme("Marlon Brando", 80);
+        var artista2 = new ArtistaFilme("Keanu Reeves", 60);
+        var artista3 = new ArtistaFilme("Leonardo DiCaprio", 50);
+        var artista4 = new ArtistaFilme("Elijah Wood", 43);
+        var artista5 = new ArtistaFilme("Russell Crowe", 60);
+
+        // Adicionando filmes aos artistas
+        artista1.AdicionarFilme(filme1);
+        artista2.AdicionarFilme(filme2);
+        artista3.AdicionarFilme(filme3);
+        artista4.AdicionarFilme(filme4);
+        artista5.AdicionarFilme(filme5);
+
+        // Adicionando artistas ao elenco dos filmes
+        filme1.AdicionarArtista(artista1);
+        filme2.AdicionarArtista(artista2);
+        filme3.AdicionarArtista(artista3);
+        filme4.AdicionarArtista(artista4);
+        filme5.AdicionarArtista(artista5);
+
+        // Adicionando os filmes à lista
+        var filmesFavoritos = new List<Filme> { filme1, filme2, filme3, filme4, filme5 };
+
+        // Exibindo as informações dos filmes no console
+        foreach (var filme in filmesFavoritos)
+        {
+            filme.ExibirInformacoes();
+            Console.WriteLine();  // Linha em branco entre filmes
+        }
+
+        // Exibindo as informações dos artistas
+        foreach (var artista in new List<ArtistaFilme> { artista1, artista2, artista3, artista4, artista5 })
+        {
+            artista.ExibirInformacoes();
+            Console.WriteLine();  // Linha em branco entre artistas
+        }
+        */
+
+        //14 Desafio: Modelar um Pet Shop com classes como Pet, Dono, Consulta e médico.
+
+        /*
+        // Criando um dono
+        Dono dono1 = new Dono("Ana Souza", "11987654321");
+
+        // Criando um pet
+        Pet pet1 = new Pet("Thor", "Cachorro", 5, dono1);
+
+        // Criando um veterinário
+        Medico vet1 = new Medico("Dr. Carlos", "Clínica Geral");
+
+        // Criando e agendando uma consulta
+        Consulta consulta1 = new Consulta(pet1, vet1, DateTime.Now, "Check-up de rotina");
+        pet1.AgendarConsulta(consulta1);
+
+        // Exibindo informações
+        pet1.ExibirInformacoes();
+        consulta1.ExibirDetalhes();*/
+
+        //15 desafio: Modelar o funcionamento de uma oficina automobilistica.
+
+        // Criando um cliente
+        /* Cliente cliente1 = new Cliente("Carlos Silva", "11998765432");
+
+         // Criando um carro
+         Carro carro1 = new Carro("Toyota Corolla", "ABC-1234", 2020);
+         cliente1.AdicionarCarro(carro1);
+
+         // Criando um mecânico
+         Mecanico mecanico1 = new Mecanico("João Souza", "Motor e Suspensão");
+
+         // Criando serviços
+         Servico servico1 = new Servico("Troca de óleo", 150.00m);
+         Servico servico2 = new Servico("Alinhamento e Balanceamento", 200.00m);
+
+         // Criando uma ordem de serviço
+         OrdemServico ordem1 = new OrdemServico(cliente1, carro1, mecanico1);
+         ordem1.AdicionarServico(servico1);
+         ordem1.AdicionarServico(servico2);
+
+         // Exibindo detalhes da ordem de serviço
+         ordem1.ExibirDetalhes();*/
+
+        //16 desafio: Escrever um programa que funcione como uma calculadora, que pode realizar as 4 operações básicas, além de calcular raiz quadrada e potências. O usuario deve entrar com dois números e um simbolo que represente a operação a ser feita.
+
+        /*
+         var calc = new Calculadora();
+
+        Console.WriteLine("Digite o primeiro número:");
+        double num1 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Digite o segundo número (caso seja raiz quadrada, digite 0):");
+        double num2 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Escolha a operação (+, -, *, /, ^ para potência, √ para raiz quadrada):");
+        string operacao = Console.ReadLine();
+
+        double resultado = 0;
+        bool operacaoValida = true;
+
+        try
+        {
+            switch (operacao)
+            {
+                case "+":
+                    resultado = calc.Somar(num1, num2);
+                    break;
+                case "-":
+                    resultado = calc.Subtrair(num1, num2);
+                    break;
+                case "*":
+                    resultado = calc.Multiplicar(num1, num2);
+                    break;
+                case "/":
+                    resultado = calc.Dividir(num1, num2);
+                    break;
+                case "^":
+                    resultado = calc.Potencia(num1, num2);
+                    break;
+                case "√":
+                    resultado = calc.RaizQuadrada(num1);
+                    break;
+                default:
+                    operacaoValida = false;
+                    Console.WriteLine("Operação inválida!");
+                    break;
+            }
+
+            if (operacaoValida)
+            {
+                Console.WriteLine($"Resultado: {resultado}");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro: {ex.Message}");
+        }*/
     }
 
 }

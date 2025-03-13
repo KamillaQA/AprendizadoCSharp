@@ -1,4 +1,5 @@
-﻿class Podcast
+﻿using AprendizadoCSharp.Modelos;
+internal class Podcast
 {
     public List<Episodio> episodios = new List<Episodio>();
     public string Nome { get; }
@@ -11,9 +12,9 @@
         Host = host;
         Duracao = duracao;
     }
-    public void AdicionarEpisodio(Episodio episodio)
+    public void AdicionarEpisodio(Episodio episodio)// Renomeado para evitar conflito
     {
-        episodios.Add(episodio);
+        episodios.Add(episodio);// Agora acessa corretamente a lista privada
     }
     public void ExibirDetalhes()
     {

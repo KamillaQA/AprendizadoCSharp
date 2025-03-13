@@ -1,4 +1,6 @@
-﻿class Episodio
+﻿namespace AprendizadoCSharp.Modelos;
+
+internal class Episodio
 {
     private List<string> convidados = new();
     public Episodio(int ordem, string titulo, int duracao)

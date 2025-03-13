@@ -1,4 +1,4 @@
-﻿namespace DesafioCurso
+﻿namespace AprendizadoCSharp.DesafioCurso
 {
     public class Curso
     {
