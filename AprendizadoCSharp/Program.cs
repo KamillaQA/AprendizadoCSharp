@@ -2,6 +2,8 @@
 using AprendizadoCSharp.DesafioCurso;
 using AprendizadoCSharp.Menus;
 using AprendizadoCSharp.Modelos;
+using AprendizadoCSharp.DesafioFormasGeometricas;
+using AprendizadoCSharp.DesafioAnimais;
 internal class Program
 {
     private static void Main(string[] args)
@@ -17,7 +19,7 @@ internal class Program
         EKK.AdicionarNota(new Avaliacao(8));
         EKK.AdicionarNota(new Avaliacao(6));
         Banda Upperoom = new("Upperoom");
-       
+
         bandasRegistradas.Add(EKK.Nome, EKK);
         bandasRegistradas.Add(Upperoom.Nome, Upperoom);
 
@@ -37,8 +39,8 @@ internal class Program
             Duracao = 273,
             Disponivel = true,
         };
-       
-        
+
+
         Musica musica2 = new Musica(EKK, "story")
         {
             Duracao = 367,
@@ -66,7 +68,7 @@ internal class Program
         musica1.ExibirFichaTecnica();
         musica2.ExibirFichaTecnica();
         albumEKK.ExibirMusicasDoAlbum();
-        EKK.ExibirDiscografia();         
+        EKK.ExibirDiscografia();
 
         // Aguarda o usuário pressionar Enter antes de fechar o console
         Console.ReadLine();
@@ -75,7 +77,7 @@ internal class Program
         {
             Console.WriteLine(mensagemDeBoasVindas);
         }
-       
+
         void ExibirOpcoesDoMenu()
         {
             ExibirLogo();
@@ -524,6 +526,65 @@ internal class Program
         {
             Console.WriteLine($"Erro: {ex.Message}");
         }*/
-    }
 
+        //17 Desafio: Criar uma hierarquia de classes representando formas geométricas, como Quadrado, Círculo e Triângulo. Utilize herança para criar uma classe base chamada FormaGeometrica, que contenha métodos para calcular a área e o perímetro de uma forma.
+        /*
+        }FormaGeometrica quadrado = new Quadrado(5);
+        Console.WriteLine($"Quadrado - Área: {quadrado.CalcularArea()}, Perímetro: {quadrado.CalcularPerimetro()}");
+
+        FormaGeometrica circulo = new Circulo(3);
+        Console.WriteLine($"Círculo - Área: {circulo.CalcularArea()}, Perímetro: {circulo.CalcularPerimetro()}");
+
+        FormaGeometrica triangulo = new TrianguloEquilatero(4);
+        Console.WriteLine($"Triângulo Equilátero - Área: {triangulo.CalcularArea()}, Perímetro: {triangulo.CalcularPerimetro()}");*/
+
+        //18 Desafio: Crie uma hierarquia de classes representando funcionários de uma empresa. Utilize herança para criar classes como Gerente, Programador e Analista. Cada classe deve ter propriedades específicas, além das propriedades comuns a todos os funcionários, como Nome e Salário.
+        /* Funcionario funcionario = new Funcionario("Carlos Silva", 5000);
+        Gerente gerente = new Gerente("Maria Oliveira", 8000, "TI");
+        Programador programador = new Programador("Lucas Almeida", 6000, "C#");
+        Analista analista = new Analista("Ana Costa", 4500, "Gestão de Projetos");
+
+        funcionario.ExibirInformacoes();
+        Console.WriteLine();
+        gerente.ExibirInformacoes();
+        Console.WriteLine();
+        programador.ExibirInformacoes();
+        Console.WriteLine();
+        analista.ExibirInformacoes();*/
+
+        //18 Desafio: Criar uma hierarquia de classes representando contas bancárias, como ContaCorrente e ContaPoupanca. Utilize herança e o conceito de métodos virtuais para implementar um método CalcularSaldo que retorne o saldo atual da conta.
+        /*// Criando objetos de diferentes tipos de contas bancárias
+        ContaBancaria contaBancaria = new ContaBancaria("Carlos Silva", 1000);
+        ContaCorrente contaCorrente = new ContaCorrente("Maria Oliveira", 5000, 2000);
+        ContaPoupanca contaPoupanca = new ContaPoupanca("Lucas Almeida", 3000, 5);
+
+        // Exibindo o saldo de cada conta
+        Console.WriteLine($"{contaBancaria.Titular} - Saldo: {contaBancaria.CalcularSaldo():C}");
+        Console.WriteLine($"{contaCorrente.Titular} - Saldo: {contaCorrente.CalcularSaldo():C}");
+        Console.WriteLine($"{contaPoupanca.Titular} - Saldo: {contaPoupanca.CalcularSaldo():C}");*/
+
+        //19 desafio: Criar uma hierarquia de classes representando animais, como Mamifero, Ave e Peixe. Utilize herança e o conceito de métodos virtuais para implementar um método EmitirSom que represente o som característico de cada tipo de animal.
+        /* // Criando objetos de diferentes tipos de animais
+         Animal animal1 = new Mamifero("Leão");
+         Animal animal2 = new Ave("Sabiá");
+         Animal animal3 = new Peixe("Salmão");
+
+         // Chamando o método EmitirSom para cada tipo de animal
+         animal1.EmitirSom();
+         animal2.EmitirSom();
+         animal3.EmitirSom();*/
+
+        //20 desafio: Criar uma hierarquia de classes representando produtos eletrônicos, como Smartphone, Tablet e Laptop. Utilize herança e o conceito de métodos virtuais para implementar um método ExibirInformacoes que retorne informações específicas de cada produto.
+        /* // Criando objetos de diferentes tipos de produtos eletrônicos
+        ProdutoEletronico smartphone = new Smartphone("iPhone 13", 7999.99m, "iOS", 6);
+        ProdutoEletronico tablet = new Tablet("iPad Pro", 4999.99m, "12.9 polegadas", "Wi-Fi + 5G");
+        ProdutoEletronico laptop = new Laptop("MacBook Air", 9999.99m, "Apple M1", 256);
+
+        // Exibindo as informações de cada produto
+        smartphone.ExibirInformacoes();
+        Console.WriteLine();
+        tablet.ExibirInformacoes();
+        Console.WriteLine();
+        laptop.ExibirInformacoes();*/
+    }
 }
