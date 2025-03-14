@@ -1,4 +1,4 @@
-#CursoCSharp - Sistema de Gerenciamento de Bandas 🎵
+# CursoCSharp - Sistema de Gerenciamento de Bandas 🎵
 
 Este repositório contém um projeto em C# para o gerenciamento de bandas, álbuns, avaliações musicais e diversos desafios.
 
