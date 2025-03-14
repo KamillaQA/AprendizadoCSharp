@@ -9,7 +9,9 @@ internal class Banda
     {
         Nome = nome;
     }
+
     public string Nome { get; }
+
     public double Media
     {
         get
@@ -20,6 +22,8 @@ internal class Banda
     }
 
     public List<Album> Albuns => albuns;
+
+    public Podcast? Podcast { get; set; } // <-- Propriedade adicionada
 
     public void AdicionarAlbum(Album album)
     {
